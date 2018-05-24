@@ -1,2 +1,2 @@
-# spring-rest-docs-example
-Example Repository for Spring Rest Docs blog post
+# Rest Docs Starter
+Example repository for Spring Rest Docs blog post.
