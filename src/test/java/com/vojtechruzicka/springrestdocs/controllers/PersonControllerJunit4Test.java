@@ -42,7 +42,8 @@ public class PersonControllerJunit4Test {
     public void getPersonShouldReturnOk() throws Exception {
         this.mockMvc.perform(get("/persons/"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType("application/json;charset=UTF-8")).andDo(document("persons"));
+                .andExpect(content().contentType("application/json;charset=UTF-8"))
+                .andDo(document("persons"));
     }
 
 }
