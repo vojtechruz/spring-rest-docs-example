@@ -30,7 +30,7 @@ public class PersonControllerOriginalTest {
 
     @Test
     public void getPersonByIdShouldReturnOk() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/persons/"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/persons/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json;charset=UTF-8"));
     }
