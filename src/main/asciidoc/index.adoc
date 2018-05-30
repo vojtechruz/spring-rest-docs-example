@@ -16,6 +16,9 @@ Obtains a specific person registered in the application by its unique identifier
 ==== Path Parameters
 include::{snippets}/persons/get-by-id/path-parameters.adoc[]
 
+==== Response Fields
+include::{snippets}/persons/get-by-id/response-fields.adoc[]
+
 ==== Sample Request
 include::{snippets}/persons/get-by-id/http-request.adoc[]
 

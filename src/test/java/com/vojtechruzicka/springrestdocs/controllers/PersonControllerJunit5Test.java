@@ -15,13 +15,15 @@ import org.springframework.web.context.WebApplicationContext;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
+import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
+import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
-@ExtendWith({ RestDocumentationExtension.class, SpringExtension.class})
+@ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
 public class PersonControllerJunit5Test {
 
     private MockMvc mockMvc;
@@ -41,7 +43,19 @@ public class PersonControllerJunit5Test {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andDo(document("persons/get-by-id",
-                        pathParameters(parameterWithName("id").description("Identifier of the person to be obtained."))));
+                        pathParameters(parameterWithName("id")
+                                .description("Identifier of the person to be obtained.")),
+                        responseFields(
+                                fieldWithPath("id")
+                                        .description("Unique identifier of the person."),
+                                fieldWithPath("firstName")
+                                        .description("First Name of the person."),
+                                fieldWithPath("lastName")
+                                        .description("Last Name of the person."),
+                                fieldWithPath("age")
+                                        .description("Age of the person in years.")
+                        )
+                ));
     }
 
 }
